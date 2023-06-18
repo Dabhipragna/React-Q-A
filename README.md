@@ -2775,3 +2775,50 @@ const MyComponent = React.memo((props) => {
 In this example, the `MyComponent` functional component is wrapped with `React.memo`. The component will only re-render if the `value` prop changes, as determined by a shallow comparison.
 
 `React.memo` is a powerful tool for optimizing functional components, especially when they receive complex props that may not change frequently. However, it's important to ensure that the comparison logic used by `React.memo` is appropriate for the specific use case. In some cases, a custom `areEqual` function can be provided to handle more complex prop comparisons.
+
+### 101. Module css in react js
+1. Create a new CSS file for your component. For example, if you have a `MyComponent.js` file, create a `MyComponent.module.css` file in the same directory.
+
+2. In your `MyComponent.module.css` file, write your CSS code as you normally would, but make sure to use unique class names. For example:
+
+   ```css
+   .container {
+     background-color: #f5f5f5;
+     padding: 20px;
+   }
+
+   .title {
+     color: #333;
+     font-size: 24px;
+   }
+   ```
+
+3. In your `MyComponent.js` file, import the CSS module using the following syntax:
+
+   ```jsx
+   import styles from './MyComponent.module.css';
+   ```
+
+   The `styles` variable will now contain an object with the mappings of your CSS class names to unique identifiers.
+
+4. Apply the styles to your JSX elements using the generated class names. For example:
+
+   ```jsx
+   import React from 'react';
+   import styles from './MyComponent.module.css';
+
+   const MyComponent = () => {
+     return (
+       <div className={styles.container}>
+         <h1 className={styles.title}>Hello, React!</h1>
+       </div>
+     );
+   };
+
+   export default MyComponent;
+   ```
+
+   Note that you access the class names as properties of the `styles` object.
+
+5. When you use the component elsewhere in your application, the CSS module will ensure that the class names are scoped locally to the component, avoiding conflicts with other styles.
+
